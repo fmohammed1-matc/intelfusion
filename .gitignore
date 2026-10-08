@@ -1,0 +1,20 @@
+# Python
+__pycache__/
+*.py[cod]
+*.egg-info/
+.venv/
+venv/
+
+# Runtime data (generated locally, never committed)
+data/
+*.db
+*.db-journal
+config.json
+.env
+
+# OS / editor
+.DS_Store
+.idea/
+.vscode/
+
+.pytest_cache/

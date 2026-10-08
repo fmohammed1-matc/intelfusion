@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>IntelFusion — Threat-Intelligence Correlation Engine</title>
+<link rel="stylesheet" href="/static/style.css" />
+<script type="importmap">
+{ "imports": { "three": "https://unpkg.com/three@0.160.0/build/three.module.js" } }
+</script>
+</head>
+<body>
+
+<!-- Boot sequence overlay -->
+<div id="boot">
+  <div id="boot-term"></div>
+</div>
+
+<canvas id="particles"></canvas>
+
+<header>
+  <div class="brand">
+    <div class="logo">◈</div>
+    <div>
+      <h1>INTEL<span>FUSION</span></h1>
+      <p class="sub">threat-intelligence correlation engine</p>
+    </div>
+  </div>
+  <div class="hdr-right">
+    <div id="clock" class="mono">--:--:--</div>
+    <div id="live-pill" class="pill"><span class="dot"></span>LIVE</div>
+  </div>
+</header>
+
+<main>
+  <!-- Left: feeds + stats -->
+  <section class="col">
+    <div class="panel">
+      <h2>FEED HEALTH</h2>
+      <div id="feeds"></div>
+    </div>
+    <div class="panel">
+      <h2>SOC STATS</h2>
+      <div id="stats" class="stat-grid"></div>
+    </div>
+    <div class="panel">
+      <h2>ACTIONS</h2>
+      <button id="scan-btn">⟳ &nbsp;RUN CORRELATION SCAN</button>
+      <p id="scan-msg" class="mono dim"></p>
+    </div>
+  </section>
+
+  <!-- Center: 3D globe -->
+  <section class="col globe-col">
+    <div class="panel globe-panel">
+      <h2>GLOBAL THREAT MAP</h2>
+      <div id="globe-wrap"><canvas id="globe"></canvas></div>
+      <div class="legend mono">
+        <span><i class="sw critical"></i>critical</span>
+        <span><i class="sw high"></i>high</span>
+        <span><i class="sw medium"></i>medium</span>
+        <span><i class="sw low"></i>low</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- Right: alert timeline -->
+  <section class="col">
+    <div class="panel timeline-panel">
+      <h2>ALERT TIMELINE</h2>
+      <div id="timeline"></div>
+    </div>
+  </section>
+
+  <!-- Bottom: IOC table -->
+  <section class="wide">
+    <div class="panel">
+      <h2>INDICATORS OF COMPROMISE <span id="ioc-count" class="mono dim"></span></h2>
+      <input id="ioc-search" type="text" placeholder="filter indicators…" />
+      <div class="table-wrap">
+        <table>
+          <thead><tr>
+            <th>Indicator</th><th>Type</th><th>Feeds</th><th>Severity</th><th>First seen</th>
+          </tr></thead>
+          <tbody id="ioc-rows"></tbody>
+        </table>
+      </div>
+    </div>
+  </section>
+</main>
+
+<!-- Alert detail modal -->
+<div id="modal" class="hidden">
+  <div class="modal-box panel">
+    <button id="modal-close">✕</button>
+    <h2>ALERT DETAIL</h2>
+    <div id="modal-body"></div>
+  </div>
+</div>
+
+<script type="module" src="/static/app.js"></script>
+</body>
+</html>
